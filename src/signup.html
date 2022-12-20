@@ -9,7 +9,7 @@
     <div class="container my-4 ">
     
         <h1 class="text-center">Signup Here</h1> 
-        <form action="signup.php" method="post">
+        <form action="signup.php" method="post" id="signup_form">
         
             <div class="form-group"> 
                 <label for="username">Username</label> 
@@ -27,16 +27,49 @@
                 <label for="cpassword">Confirm Password</label> 
                 <input type="password" class="form-control"
                     id="cpassword" name="cpassword">
-        
-                <small id="reminder" class="form-text text-muted">
-                Make sure to type the same password
-                </small> 
+                <small id="reminder" class="form-text text-muted">Make sure to type the same password</small> 
             </div>      
         
-            <button type="submit" class="btn btn-primary">
-            SignUp
-            </button> 
+            <button type="button" class="btn btn-primary" id="signup" >SignUp</button> 
         </form> 
+        <span id="test">
+
+        </span>
     </div>
+
+    <script>
+        document.getElementById("username").focus();	
+        document.getElementById("username").onblur = function(e) {
+            if (!document.getElementById("username").value) {
+                document.getElementById("reminder").innerHTML = "Please fill in your username.";
+            } else document.getElementById("reminder").innerHTML = "Make sure to type the same password";
+        }
+        
+        document.getElementById("cpassword").onblur = function(e) {
+            if (this.value) {
+                if (!checkPass()) {
+                    document.getElementById("reminder").innerHTML = "Passwords do not match!";
+                } else {
+                    document.getElementById("reminder").innerHTML = "";
+                }
+            }
+        }
+        function checkPass() {
+            if (document.getElementById("password").value  != document.getElementById("cpassword").value) return false;
+            else return true;				
+        }
+        function jump(e, self, next) {
+            if (window.event) e = window.event;
+            if (e.keyCode == 13) {
+                document.getElementById(next).focus();
+            }
+        }
+
+        signup.addEventListener("click", (() => {
+            if (!document.getElementById("reminder").innerHTML) {
+                document.getElementById("signup_form").submit();
+            }
+        }))
+    </script>
 </body>
 </html>
