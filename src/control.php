@@ -7,14 +7,16 @@ class Control {
         $ext = new Extract();
         $ext->toTable();
     }
-    public function login() {   
-        
+    public function login() {
+        echo 'logging in...';
+        $log = new Login($_POST['login_username'], $_POST['login_password']);
+        $log->checkPassword();
     }
 
     public function signup() {
-        echo "bruh" . "<br>";
         $sig = new Signup($_POST['SU_username'], $_POST['password']);
         $sig->modifyDB();
+        header("Location: index.html");
     }
 }
 $ctrl = new Control();
@@ -24,4 +26,8 @@ if (isset($_POST['print'])) {
 if (isset($_POST['SU_username'])) {
     $ctrl->signup();
 }
+if (isset($_POST['login']) ) {
+    $ctrl->login();
+}
 
+// && $_POST['login_username']
