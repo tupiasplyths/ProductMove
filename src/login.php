@@ -19,14 +19,19 @@ class Login {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $result = $conn->prepare('SELECT username, passwords FROM users WHERE username=?');
+        // get hashed password and bind to variable
+        // use prepare to avoid SQL injection
+        $result = $conn->prepare('SELECT passwords FROM users WHERE username=?');
         $result->bind_param("s", $this->username);
         $result->execute();
-        $result->bind_result($col1,$col2);
+        $result->bind_result($rs);
         $result->fetch();
 
-        $is_valid_profile = (password_verify($this->password, $col2)) ? 'You are logged in!' : 'Your username or   password is incorrect!';
+        // confirm password matches hashed password
+        $is_valid_profile = (password_verify($this->password, $rs)) ? 'You are logged in!' : 'Your username or   password is incorrect!';
         echo $is_valid_profile;   
+
+        // redirect
         if ($is_valid_profile == 'You are logged in!'){
             header("refresh:5; url=homepage.html");
         } else {

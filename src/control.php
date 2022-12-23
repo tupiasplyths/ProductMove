@@ -20,6 +20,7 @@ class Control {
     }
 }
 $ctrl = new Control();
+
 if (isset($_POST['print'])) {
     $ctrl->exec();
 }
@@ -29,5 +30,3 @@ if (isset($_POST['SU_username'])) {
 if (isset($_POST['login']) ) {
     $ctrl->login();
 }
-
-// && $_POST['login_username']

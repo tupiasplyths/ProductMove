@@ -22,7 +22,7 @@ class Signup {
         $sql = "INSERT INTO users SET username ='" . $this->SU_username 
                 . "', passwords ='" . $sec_pwd . "'";
         if($conn->query($sql)==TRUE) {
-            echo "success, passwords:" . $this->SU_password . "hashed password:" . $sec_pwd;
+            echo "success";
         } else {
             echo "failed";
         }
