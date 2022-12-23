@@ -7,9 +7,12 @@
 </head>
 <body>
     <div class="container my-4 ">
-    
         <h1 class="text-center">Signup Here</h1> 
         <form action="control.php" method="post" id="signup_form">
+            <!-- TO DO:
+            add more signup fields
+            full name, date of birth, roles(admin, seller...)
+            -->
         
             <div class="form-group"> 
                 <label for="SU_username">Username</label> 
@@ -77,6 +80,7 @@
 
         send.addEventListener("click", accept);
 
+        // confirm form
         function accept() {
             if (!document.getElementById("password").value) {
                 document.getElementById("password").focus();
