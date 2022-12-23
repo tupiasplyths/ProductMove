@@ -30,7 +30,7 @@
                 <small id="reminder" class="form-text text-muted">Make sure to type the same password</small> 
             </div>      
         
-            <button type="button" class="btn btn-primary" id="submit" >SignUp</button> 
+            <button type="button" class="btn btn-primary" id="send" >Sign Up</button> 
         </form> 
     </div>
 
@@ -39,7 +39,7 @@
         document.getElementById("SU_username").onblur = function(e) {
             if (!document.getElementById("SU_username").value) {
                 document.getElementById("reminder").innerHTML = "Please fill in your username.";
-            } else document.getElementById("reminder").innerHTML = "&nbsp";
+            } else document.getElementById("reminder").innerHTML = "Everything's fine";
         }
         
         document.getElementById("cpassword").onblur = function(e) {
@@ -47,7 +47,7 @@
                 if (!checkPass()) {
                     document.getElementById("reminder").innerHTML = "Passwords do not match!";
                 } else {
-                    document.getElementById("reminder").innerHTML = "&nbsp";
+                    document.getElementById("reminder").innerHTML = "Everything's fine";
                 }
             }
         }
@@ -61,12 +61,12 @@
         document.getElementById("password").onkeyup = function(e) {
             jump(e, this, 'cpassword');
 		};
-        if (window.event) e = window.event;
-        if (e.keyCode == 13) {
-            accept();
-        }
+        
         document.getElementById("cpassword").onkeyup = function(e) {
-            
+            if (window.event) e = window.event;
+            if (e.keyCode == 13) {
+                accept();
+            }
         }
         function jump(e, self, next) {
             if (window.event) e = window.event;
@@ -75,7 +75,7 @@
             }
         }
 
-        submit.addEventListener("click", accept);
+        send.addEventListener("click", accept);
 
         function accept() {
             if (!document.getElementById("password").value) {
@@ -84,8 +84,8 @@
             } else if (!document.getElementById("cpassword").value) {
                 document.getElementById("cpassword").focus();
                 document.getElementById("reminder").innerHTML = "Please re-enter your password";
-            }
-            if (!document.getElementById("reminder").innerHTML) {
+            } 
+            if (document.getElementById("reminder").innerHTML =="Everything's fine") {
                 document.getElementById("signup_form").submit();
             }
         }

@@ -18,8 +18,15 @@ class Signup {
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        $sql = "INSERT INTO users SET usernames ='" . $this->SU_username 
+        $sql = "INSERT INTO users SET username ='" . $this->SU_username 
                 . "', passwords ='" . $this->SU_password . "'";
+        if($conn->query($sql)==TRUE) {
+            echo "success";
+        } else {
+            echo "failed";
+        }
+        $conn->close();
+        header("Location: index.html");
     }
 }
 
