@@ -9,12 +9,12 @@
     <div class="container my-4 ">
     
         <h1 class="text-center">Signup Here</h1> 
-        <form action="signup.php" method="post" id="signup_form">
+        <form action="control.php" method="post" id="signup_form">
         
             <div class="form-group"> 
-                <label for="username">Username</label> 
-            <input type="text" class="form-control" id="username"
-                name="username" aria-describedby="emailHelp">    
+                <label for="SU_username">Username</label> 
+            <input type="text" class="form-control" id="SU_username"
+                name="SU_username" aria-describedby="emailHelp" placeholder="Username">    
             </div>
         
             <div class="form-group"> 
@@ -30,19 +30,16 @@
                 <small id="reminder" class="form-text text-muted">Make sure to type the same password</small> 
             </div>      
         
-            <button type="button" class="btn btn-primary" id="signup" >SignUp</button> 
+            <button type="button" class="btn btn-primary" id="submit" >SignUp</button> 
         </form> 
-        <span id="test">
-
-        </span>
     </div>
 
     <script>
-        document.getElementById("username").focus();	
-        document.getElementById("username").onblur = function(e) {
-            if (!document.getElementById("username").value) {
+        document.getElementById("SU_username").focus();	
+        document.getElementById("SU_username").onblur = function(e) {
+            if (!document.getElementById("SU_username").value) {
                 document.getElementById("reminder").innerHTML = "Please fill in your username.";
-            } else document.getElementById("reminder").innerHTML = "Make sure to type the same password";
+            } else document.getElementById("reminder").innerHTML = "&nbsp";
         }
         
         document.getElementById("cpassword").onblur = function(e) {
@@ -50,13 +47,26 @@
                 if (!checkPass()) {
                     document.getElementById("reminder").innerHTML = "Passwords do not match!";
                 } else {
-                    document.getElementById("reminder").innerHTML = "";
+                    document.getElementById("reminder").innerHTML = "&nbsp";
                 }
             }
         }
         function checkPass() {
             if (document.getElementById("password").value  != document.getElementById("cpassword").value) return false;
             else return true;				
+        }
+        document.getElementById("SU_username").onkeyup = function(e) {
+            jump(e, this, 'password');
+		};
+        document.getElementById("password").onkeyup = function(e) {
+            jump(e, this, 'cpassword');
+		};
+        if (window.event) e = window.event;
+        if (e.keyCode == 13) {
+            accept();
+        }
+        document.getElementById("cpassword").onkeyup = function(e) {
+            
         }
         function jump(e, self, next) {
             if (window.event) e = window.event;
@@ -65,11 +75,20 @@
             }
         }
 
-        signup.addEventListener("click", (() => {
+        submit.addEventListener("click", accept);
+
+        function accept() {
+            if (!document.getElementById("password").value) {
+                document.getElementById("password").focus();
+                document.getElementById("reminder").innerHTML = "Please enter your password";
+            } else if (!document.getElementById("cpassword").value) {
+                document.getElementById("cpassword").focus();
+                document.getElementById("reminder").innerHTML = "Please re-enter your password";
+            }
             if (!document.getElementById("reminder").innerHTML) {
                 document.getElementById("signup_form").submit();
             }
-        }))
+        }
     </script>
 </body>
 </html>
