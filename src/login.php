@@ -19,16 +19,19 @@ class Login {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // checking username and password in database
-        $result = $conn->prepare('SELECT username, passwords FROM users WHERE username=? AND passwords=?');
-        // bind_param("type1type2", $data1, $data2)
-        $result->bind_param("ss", $this->username, $this->password);
+        $result = $conn->prepare('SELECT username, passwords FROM users WHERE username=?');
+        $result->bind_param("s", $this->username);
         $result->execute();
         $result->bind_result($col1,$col2);
         $result->fetch();
-        $is_valid_profile = ($col1!=null) ? 'You are logged in!' : 'Your username or   password is incorrect!';
+
+        $is_valid_profile = (password_verify($this->password, $col2)) ? 'You are logged in!' : 'Your username or   password is incorrect!';
         echo $is_valid_profile;   
-        header( "refresh:5; url=homepage.html" );      
+        if ($is_valid_profile == 'You are logged in!'){
+            header("refresh:5; url=homepage.html");
+        } else {
+            header("refresh:5; url=index.html");
+        }
     }
     
 }

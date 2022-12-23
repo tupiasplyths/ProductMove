@@ -16,7 +16,7 @@ class Control {
     public function signup() {
         $sig = new Signup($_POST['SU_username'], $_POST['password']);
         $sig->modifyDB();
-        header("Location: index.html");
+        header("refresh:5; url=index.html");
     }
 }
 $ctrl = new Control();

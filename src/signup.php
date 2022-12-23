@@ -18,11 +18,11 @@ class Signup {
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        
+        $sec_pwd = password_hash($this->SU_password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO users SET username ='" . $this->SU_username 
-                . "', passwords ='" . $this->SU_password . "'";
+                . "', passwords ='" . $sec_pwd . "'";
         if($conn->query($sql)==TRUE) {
-            echo "success";
+            echo "success, passwords:" . $this->SU_password . "hashed password:" . $sec_pwd;
         } else {
             echo "failed";
         }
