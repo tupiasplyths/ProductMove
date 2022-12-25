@@ -1,4 +1,5 @@
 <?php
+include_once('connectDB.php');
 class Signup {
     private $SU_username;
     private $SU_password;
@@ -10,22 +11,20 @@ class Signup {
     public function modifyDB()
     {
         // Connect to database
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "test";
-        $conn = new mysqli($servername, $username, $password, $dbname, "3307");
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        $conn = Connect::initConn();
+
+        // hashing password
         $sec_pwd = password_hash($this->SU_password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO users SET username ='" . $this->SU_username 
                 . "', passwords ='" . $sec_pwd . "'";
+
+        // run the query
         if($conn->query($sql)==TRUE) {
             echo "success";
         } else {
             echo "failed";
         }
+        //close the connection
         $conn->close();
     }
 }

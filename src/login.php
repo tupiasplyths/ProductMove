@@ -1,4 +1,5 @@
 <?php
+include_once('connectDB.php');
 class Login {
     private $username;
     private $password;
@@ -10,14 +11,7 @@ class Login {
 
     public function checkPassword(){
         // Connect to database
-        $servername = "localhost";
-        $DBusername = "root";
-        $DBpassword = "";
-        $dbname = "test";
-        $conn = new mysqli($servername, $DBusername, $DBpassword, $dbname, "3307");
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        $conn = Connect::initConn();
 
         // get hashed password and bind to variable
         // use prepare to avoid SQL injection
@@ -33,9 +27,9 @@ class Login {
 
         // redirect
         if ($is_valid_profile == 'You are logged in!'){
-            header("refresh:5; url=homepage.html");
+            header("refresh:3; url=homepage.html");
         } else {
-            header("refresh:5; url=index.html");
+            header("refresh:3; url=index.html");
         }
     }
     
