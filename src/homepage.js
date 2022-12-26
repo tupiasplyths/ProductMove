@@ -14,6 +14,7 @@ function jsonToTable() {
             for (var i=0; i<data.length; i++) {
                 text+= "<tr><td>" + data[i].username + "</td><td>" + data[i].passwords + "</td></tr>";
             }
+            
+            document.getElementById('bod').innerHTML = text;
         });
-    document.getElementById('bod').innerHTML = text;
 }
