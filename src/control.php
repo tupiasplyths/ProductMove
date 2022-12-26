@@ -26,10 +26,9 @@ class Control {
 
     public function logout()
     {
-        echo 'you are logged out';
         unset($_SESSION["username"]);
         unset($_SESSION["valid"]);
-        header('refresh:3; url=index.html');
+        header('location:index.html');
     }
 }
 $ctrl = new Control();

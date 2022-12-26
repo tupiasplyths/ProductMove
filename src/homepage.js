@@ -4,6 +4,7 @@ var text = "";
 display.addEventListener('click', jsonToTable);
 
 function jsonToTable() {
+    document.getElementById('display').disabled=true;
     fetch('control.php', {
         method: 'post',
         body: fm
