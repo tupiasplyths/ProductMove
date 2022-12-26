@@ -2,6 +2,8 @@
 include_once('extDB.php');
 include_once('login.php');
 include_once('signup.php');
+
+session_start();
 class Control {
     public function exec() {
         $ext = new Extract();
@@ -16,7 +18,15 @@ class Control {
     public function signup() {
         $sig = new Signup($_POST['SU_username'], $_POST['password']);
         $sig->modifyDB();
-        header("refresh:5; url=index.html");
+        header("refresh:4; url=index.html");
+    }
+
+    public function logout()
+    {
+        echo 'you are logged out';
+        unset($_SESSION["username"]);
+        unset($_SESSION["valid"]);
+        header('refresh:3; url=index.html');
     }
 }
 $ctrl = new Control();
@@ -27,6 +37,9 @@ if (isset($_POST['print'])) {
 if (isset($_POST['SU_username'])) {
     $ctrl->signup();
 }
-if (isset($_POST['login']) ) {
+if (isset($_POST['login'])) {
     $ctrl->login();
+}
+if (isset($_POST['logout_button'])) {
+    $ctrl->logout();
 }

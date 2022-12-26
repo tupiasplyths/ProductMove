@@ -1,3 +1,12 @@
+<?php
+include_once('control.php');
+    if (!isset($_SESSION['valid']) || !$_SESSION['valid']) {
+        echo "access denied";
+        header('refresh:2, url = index.html');
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,5 +19,8 @@
 </head>
 <body>
     <img src="/assets/lol.gif" alt="rickrolledlol">
+    <form action="control.php" method="post" id="logout">
+        <input type="submit" value="Log out" name="logout_button"/>
+    </form>
 </body>
 </html>
