@@ -1,16 +1,25 @@
-/* td {
-    border: 1px solid black;
+div.container {
+    align-items : center;
+    display: flex;
+    flex-direction : column;
 }
-
-thead {
-    border: 1px solid black;
-} */
-/* basics */
+table {
+    background-color: aliceblue;
+}
+td, thead{
+    border: 2px solid black;
+    font-size: large;
+    padding: 2px;
+}
 html {
     background-color: #56baed;
 }
 
 body {
+    background-image: url('assets/bg.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;    
     font-family: "Poppins", sans-serif;
     height: 100vh;
 }

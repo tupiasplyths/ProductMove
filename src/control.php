@@ -7,7 +7,10 @@ session_start();
 class Control {
     public function exec() {
         $ext = new Extract();
-        $ext->toTable();
+        // $ext->toTable();
+        
+        header('Content-Type: application/json');
+        echo $ext->toJSON();
     }
     public function login() {
         echo 'logging in...';
@@ -23,15 +26,14 @@ class Control {
 
     public function logout()
     {
-        echo 'you are logged out';
         unset($_SESSION["username"]);
         unset($_SESSION["valid"]);
-        header('refresh:3; url=index.html');
+        header('location:index.html');
     }
 }
 $ctrl = new Control();
 
-if (isset($_POST['print'])) {
+if (isset($_POST['a'])) {
     $ctrl->exec();
 }
 if (isset($_POST['SU_username'])) {
