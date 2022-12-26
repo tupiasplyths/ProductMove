@@ -7,7 +7,10 @@ session_start();
 class Control {
     public function exec() {
         $ext = new Extract();
-        $ext->toTable();
+        // $ext->toTable();
+        
+        header('Content-Type: application/json');
+        echo $ext->toJSON();
     }
     public function login() {
         echo 'logging in...';
@@ -31,7 +34,7 @@ class Control {
 }
 $ctrl = new Control();
 
-if (isset($_POST['print'])) {
+if (isset($_POST['a'])) {
     $ctrl->exec();
 }
 if (isset($_POST['SU_username'])) {

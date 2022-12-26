@@ -1,4 +1,5 @@
 <?php
+// check if the user is logged in
 include_once('control.php');
     if (!isset($_SESSION['valid']) || !$_SESSION['valid']) {
         echo "access denied";
@@ -18,9 +19,28 @@ include_once('control.php');
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <img src="/assets/lol.gif" alt="rickrolledlol">
-    <form action="control.php" method="post" id="logout">
-        <input type="submit" value="Log out" name="logout_button"/>
-    </form>
+    <div class="container">
+        <img src="/assets/lol.gif" alt="rickrolledlol">
+        <!-- <form action="control.php" method="post">
+            <input type="submit" name="print" id="print" value="Get Table">
+        </form> -->
+        <table id="tabe">
+            <thead>
+                <tr>
+                    <td>Username</td>
+                    <td>Password</td>
+                </tr>
+            </thead>
+            <tbody id="bod"></tbody>
+        </table>
+        <button id="display" name="btn">
+            Display Table
+        </button>
+        <form action="control.php" method="post" id="logout">
+            <input type="submit" value="Log out" name="logout_button"/>
+        </form>
+    </div>
+
+    <script src="homepage.js"></script>
 </body>
 </html>

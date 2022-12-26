@@ -2,16 +2,7 @@
 class Extract {
     public function toTable()
     {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "test";
-
-        
-        $conn = new mysqli($servername, $username, $password, $dbname, "3307");
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        $conn = Connect::initConn();
         echo "<link rel='stylesheet' href='style.css'>";
         $sql = "SELECT username, passwords FROM users";
         $result = $conn->query($sql);
@@ -26,5 +17,22 @@ class Extract {
             echo "0 results";
         }
         $conn->close();
+    }
+
+    public function toJSON() {
+        $conn = Connect::initConn();
+        // echo "<link rel='stylesheet' href='style.css'>";
+        $sql = "SELECT username, passwords FROM users";
+        $result = $conn->query($sql);
+
+        //create an array
+        $emparray = array();
+        while($row =mysqli_fetch_assoc($result))
+        {
+            $emparray[] = $row;
+        }        
+        $conn->close();
+        return json_encode($emparray);
+        
     }
 }
