@@ -1,5 +1,3 @@
-CREATE TABLE `my_db`. ( `id` INT NOT NULL AUTO_INCREMENT , `danhmuc` VARCHAR(100) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
-CREATE TABLE `my_db`.`product` ( `id` INT NOT NULL AUTO_INCREMENT , `name` INT(100) NOT NULL , `image` BINARY(100) NOT NULL , `status` VARCHAR(100) NOT NULL , `factory` VARCHAR(100) NOT NULL , `agency` VARCHAR(100) NOT NULL , `insurance` VARCHAR(100) NOT NULL , `createdAt` DATE NOT NULL , `updatedAt` DATE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
-ALTER TABLE `danhmuc` ADD `thutu` INT NOT NULL AFTER `danhmuc`;
+CREATE TABLE `my_db`.`danhmuc` ( `id` INT NOT NULL AUTO_INCREMENT , `tendanhmuc` VARCHAR(100) NOT NULL , `thutu` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 CREATE TABLE `my_db`.`sanpham` ( `id_sanpham` INT NOT NULL AUTO_INCREMENT , `tensanpham` VARCHAR(100) NOT NULL , `masp` VARCHAR(100) NOT NULL , `trangthai` VARCHAR(100) NOT NULL , `Cososanxuat` VARCHAR(100) NOT NULL , `Dailyphanphoi` VARCHAR(100) NOT NULL , `Trungtambaohanh` VARCHAR(100) NOT NULL , `Ngaysanxuat` DATE NOT NULL , `Thoihanbaohanh` DATE NOT NULL , PRIMARY KEY (`id_sanpham`)) ENGINE = InnoDB;
 ALTER TABLE `sanpham` ADD `id_danhmuc` INT NOT NULL AFTER `Thoihanbaohanh`;
