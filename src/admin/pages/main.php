@@ -13,7 +13,7 @@
                     $query = '';
                 }
                 if ($tam=='') {
-                    include("main/index.php");
+                    include("src/admin/login.html");
                 }
                 elseif ($tam=='quanly' && $query=='them') {
                     include("modules/them.php");
