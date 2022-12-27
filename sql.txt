@@ -1,3 +1,31 @@
 CREATE TABLE `my_db`.`danhmuc` ( `id` INT NOT NULL AUTO_INCREMENT , `tendanhmuc` VARCHAR(100) NOT NULL , `thutu` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 CREATE TABLE `my_db`.`sanpham` ( `id_sanpham` INT NOT NULL AUTO_INCREMENT , `tensanpham` VARCHAR(100) NOT NULL , `masp` VARCHAR(100) NOT NULL , `trangthai` VARCHAR(100) NOT NULL , `Cososanxuat` VARCHAR(100) NOT NULL , `Dailyphanphoi` VARCHAR(100) NOT NULL , `Trungtambaohanh` VARCHAR(100) NOT NULL , `Ngaysanxuat` DATE NOT NULL , `Thoihanbaohanh` DATE NOT NULL , PRIMARY KEY (`id_sanpham`)) ENGINE = InnoDB;
 ALTER TABLE `sanpham` ADD `id_danhmuc` INT NOT NULL AFTER `Thoihanbaohanh`;
+
+// myphpadmin version
+CREATE DATABASE my_db;
+CREATE TABLE  my_db . danhmuc (
+     id  INT NOT NULL AUTO_INCREMENT,
+     tendanhmuc  VARCHAR(100) NOT NULL,
+     thutu  INT NOT NULL,
+    PRIMARY KEY( id )
+) 	ENGINE = INNODB; 
+CREATE TABLE  my_db . sanpham (
+     id_sanpham  INT NOT NULL AUTO_INCREMENT,
+     tensanpham  VARCHAR(100) NOT NULL,
+     masp  VARCHAR(100) NOT NULL,
+     trangthai  VARCHAR(100) NOT NULL,
+     Cososanxuat  VARCHAR(100) NOT NULL,
+     Dailyphanphoi  VARCHAR(100) NOT NULL,
+     Trungtambaohanh  VARCHAR(100) NOT NULL,
+     Ngaysanxuat  DATE NOT NULL,
+    `Thoihanbaohanh` DATE NOT NULL,
+    PRIMARY KEY(`id_sanpham`)
+) ENGINE = INNODB; ALTER TABLE
+    `sanpham` ADD `id_danhmuc` INT NOT NULL AFTER `Thoihanbaohanh`;
+	
+CREATE TABLE my_db.users (
+	uid INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	username VARCHAR(20) NOT NULL,
+	passwords VARCHAR(255) NOT NULL
+)
