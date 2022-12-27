@@ -21,14 +21,14 @@ class Control {
     public function signup() {
         $sig = new Signup($_POST['SU_username'], $_POST['password']);
         $sig->modifyDB();
-        header("refresh:4; url=index.html");
+        header("refresh:4; url=login.html");
     }
 
     public function logout()
     {
         unset($_SESSION["username"]);
         unset($_SESSION["valid"]);
-        header('location:index.html');
+        header('location:login.html');
     }
 }
 $ctrl = new Control();

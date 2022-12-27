@@ -1,3 +1,13 @@
+<?php
+// check if the user is logged in
+include_once('control.php');
+    if (!isset($_SESSION['valid']) || !$_SESSION['valid']) {
+        echo "You are not logged in";
+        header('refresh:2, url = login.html');
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

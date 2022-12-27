@@ -29,9 +29,9 @@ class Login {
         if ($is_valid_profile == 'You are logged in!'){
             $_SESSION['username'] = $this->username;
             $_SESSION['valid'] = true;
-            header("refresh:3; url=homepage.php");
+            header("refresh:3; url=index.php");
         } else {
-            header("refresh:3; url=index.html");
+            header("refresh:3; url=login.html");
         }
     }
     
