@@ -1,10 +1,10 @@
 <?php
-global $tentrungtam;
-    if(isset($_POST['timtrungtam'])) {
+  global $tentrungtam;
+  if(isset($_POST['timtrungtam'])) {
     $tentrungtam = $_POST['tentrungtam'];
-    }
-    $sql_lietkesp = "SELECT * FROM sanpham, danhmuc WHERE sanpham.id_danhmuc = danhmuc.id AND sanpham.Trungtambaohanh LIKE '%" .$tentrungtam. "%' ORDER BY id_sanpham ASC";
-    $query_lietkesp = mysqli_query($mysqli, $sql_lietkesp);
+  }
+  $sql_lietkesp = "SELECT * FROM sanpham, danhmuc WHERE sanpham.id_danhmuc = danhmuc.id AND sanpham.Trungtambaohanh LIKE '%" .$tentrungtam. "%' ORDER BY id_sanpham ASC";
+  $query_lietkesp = mysqli_query($mysqli, $sql_lietkesp);
 ?>
 
 <h3> Thống kê theo trung tâm bảo hành </h3>
@@ -27,7 +27,6 @@ global $tentrungtam;
   $i = 0;
   while ($row = mysqli_fetch_array($query_lietkesp)) {
       $i++;
-
   ?>
   <tr>
     <td><?php echo $i ?></td>
@@ -41,7 +40,7 @@ global $tentrungtam;
     <td><?php echo $row['Ngaysanxuat'] ?></td>
     <td><?php echo $row['Thoihanbaohanh'] ?></td>
   </tr>
-    <?php
-        }
-    ?>
+  <?php
+  }
+  ?>
 </table>

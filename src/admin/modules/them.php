@@ -17,5 +17,4 @@
             <td colspan="2"><input type="submit" name="themdanhmuc" value="Thêm danh mục sản phẩm"></td>
         </tr>
     </form>
-
 </table>

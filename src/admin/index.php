@@ -13,5 +13,6 @@
      include("pages/main.php");
      ?>
 
+<script src="modules/date.js"></script>
 </body>
 </html>

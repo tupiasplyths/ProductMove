@@ -23,7 +23,6 @@
   $i = 0;
   while ($row = mysqli_fetch_array($query_lietkesp)) {
       $i++;
-
   ?>
   <tr>
     <td><?php echo $i ?></td>
@@ -40,7 +39,7 @@
         <a href="modules/xulysp.php?idsanpham=<?php echo $row['id_sanpham']?>">Xóa </a> |<a href="?action=quanlysanpham&query=sua&idsanpham=<?php echo $row['id_sanpham']?>">Sửa </a>
     </td>
   </tr>
-    <?php
-        }
-    ?>
+  <?php
+  }
+  ?>
 </table>

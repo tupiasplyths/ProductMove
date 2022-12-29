@@ -65,7 +65,7 @@
         <tr>
             <td colspan="2"><input type="submit" name="suasanpham" value="Sửa sản phẩm"></td>
         </tr>
-        <?php
+    <?php
     }
     ?>
     </form>
