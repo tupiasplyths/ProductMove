@@ -10,35 +10,35 @@
     ?>
         <tr>
             <td>Tên sản phẩm</td>
-            <td><input type="text" value="<?php echo $dong['tensanpham'] ?>" name="tensanpham"></td>
+            <td><input type="text" value="<?php echo $dong['tensanpham'] ?>" name="tensanpham" onfocus="empty(this)"></td>
         </tr>
         <tr>
             <td>Mã sản phẩm</td>
-            <td><input type="text" value="<?php echo $dong['masp'] ?>" name="masp"></td>
+            <td><input type="text" value="<?php echo $dong['masp'] ?>" name="masp" onfocus="empty(this)"></td>
         </tr>
         <tr>
             <td>Trạng thái</td>
-            <td><input type="text" value="<?php echo $dong['trangthai'] ?>" name="trangthai"></td>
+            <td><input type="text" value="<?php echo $dong['trangthai'] ?>" name="trangthai" onfocus="empty(this)"></td>
         </tr>
         <tr>
             <td>Cơ sở sản xuất</td>
-            <td><input type="text" value="<?php echo $dong['Cososanxuat'] ?>" name="Cososanxuat"></td>
+            <td><input type="text" value="<?php echo $dong['Cososanxuat'] ?>" name="Cososanxuat" onfocus="empty(this)"></td>
         </tr>
         <tr>
             <td>Đại lý phân phối</td>
-            <td><input type="text" value="<?php echo $dong['Dailyphanphoi'] ?>" name="Dailyphanphoi"></td>
+            <td><input type="text" value="<?php echo $dong['Dailyphanphoi'] ?>" name="Dailyphanphoi" onfocus="empty(this)"></td>
         </tr>
         <tr>
             <td>Trung tâm bảo hành</td>
-            <td><input type="text" value="<?php echo $dong['Trungtambaohanh'] ?>" name="Trungtambaohanh"></td>
+            <td><input type="text" value="<?php echo $dong['Trungtambaohanh'] ?>" name="Trungtambaohanh" onfocus="empty(this)"></td>
         </tr>
         <tr>
             <td>Ngày sản xuất</td>
-            <td><input type="text" value="<?php echo $dong['Ngaysanxuat'] ?>" name="Ngaysanxuat"></td>
+            <td><input type="text" value="<?php echo $dong['Ngaysanxuat'] ?>" name="Ngaysanxuat" id="ManuDate_edit" onfocus="empty(this)"></td>
         </tr>
         <tr>
             <td>Thời hạn bảo hành</td>
-            <td><input type="text" value="<?php echo $dong['Thoihanbaohanh'] ?>" name="Thoihanbaohanh"></td>
+            <td><input type="text" value="<?php echo $dong['Thoihanbaohanh'] ?>" name="Thoihanbaohanh" id="WarrDate_edit" onfocus="empty(this)"></td>
         </tr>
         <tr>
             <td>Danh mục sản phẩm</td>
@@ -70,3 +70,58 @@
     ?>
     </form>
 </table>
+<script>
+    var ManuEd = document.getElementById('ManuDate_edit');
+    var WarrEd = document.getElementById('WarrDate_edit');
+    function checkValue(str, max) {
+    if (str.charAt(0) !== '0' || str == '00') {
+        var num = parseInt(str);
+        if (isNaN(num) || num <= 0 || num > max) num = 1;
+        str = num > parseInt(max.toString().charAt(0)) 
+            && num.toString().length == 1 ? '0' + num : num.toString();
+        };
+        return str;
+    };
+    WarrEd.addEventListener('blur', function(e) {
+        var ori = WarrEd.value;
+        var newdate = ori.split('-').reverse().join('-');
+        WarrEd.value = newdate;
+    });
+    ManuEd.addEventListener('blur', function(e) {
+        var ori = ManuEd.value;
+        var newdate = ori.split('-').reverse().join('-');
+        ManuEd.value = newdate;
+    })
+    ManuEd.addEventListener('input', function(e) {
+        this.type = 'text';
+        var input = this.value;
+        if (/\D\/$/.test(input)) input = input.substr(0, input.length - 3);
+        var values = input.split('-').map(function(v) {
+            return v.replace(/\D/g, '')
+        });
+        if (values[0]) values[0] = checkValue(values[0], 12);
+        if (values[1]) values[1] = checkValue(values[1], 31);
+        var output = values.map(function(v, i) {
+            return v.length == 2 && i < 2 ? v + '-' : v;
+        });
+        this.value = output.join('').substr(0, 10);
+    });
+    WarrEd.addEventListener('input', function(e) {
+        this.type = 'text';
+        var input = this.value;
+        if (/\D\/$/.test(input)) input = input.substr(0, input.length - 3);
+        var values = input.split('-').map(function(v) {
+            return v.replace(/\D/g, '')
+        });
+        if (values[0]) values[0] = checkValue(values[0], 12);
+        if (values[1]) values[1] = checkValue(values[1], 31);
+        var output = values.map(function(v, i) {
+            return v.length == 2 && i < 2 ? v + '-' : v;
+        });
+        this.value = output.join('').substr(0, 10);
+    });
+    // clear field upon focus
+    function empty(inp) {
+        inp.value = '';
+    }
+</script>

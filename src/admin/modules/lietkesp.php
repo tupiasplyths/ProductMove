@@ -36,7 +36,8 @@
     <td><?php echo $row['Ngaysanxuat'] ?></td>
     <td><?php echo $row['Thoihanbaohanh'] ?></td>
     <td>
-        <a href="modules/xulysp.php?idsanpham=<?php echo $row['id_sanpham']?>">Xóa </a> |<a href="?action=quanlysanpham&query=sua&idsanpham=<?php echo $row['id_sanpham']?>">Sửa </a>
+      <a href="modules/xulysp.php?idsanpham=<?php echo $row['id_sanpham']?>">Xóa </a> |
+      <a href="?action=quanlysanpham&query=sua&idsanpham=<?php echo $row['id_sanpham']?>">Sửa </a>
     </td>
   </tr>
   <?php

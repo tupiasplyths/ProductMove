@@ -31,11 +31,11 @@
         </tr>
         <tr>
             <td>Ngày sản xuất</td>
-            <td><input type="text" name="Ngaysanxuat" placeholder="yyyy-mm-dd" class="date" id="ManuDate"></td>
+            <td><input type="text" name="Ngaysanxuat" placeholder="dd-mm-yyyy" class="date" id="ManuDate"></td>
         </tr>
         <tr>
             <td>Thời hạn bảo hành</td>
-            <td><input type="text" name="Thoihanbaohanh" placeholder="yyyy-mm-dd" class="date" id="WarrDate"></td>
+            <td><input type="text" name="Thoihanbaohanh" placeholder="dd-mm-yyyy" class="date" id="WarrDate"></td>
         </tr>
         <tr>
             <td>Danh mục sản phẩm</td>
@@ -59,3 +59,4 @@
     </form>
 
 </table>
+<script src="modules/date.js"></script>

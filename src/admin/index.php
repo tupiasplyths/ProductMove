@@ -6,13 +6,14 @@
 <link rel="StyleSheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
-
+    <div class="header">
+        <p>BAN ĐIỀU HÀNH BIGCORP</p>
+    </div>
     <?php  
      include("config/config.php");
-     include("pages/header.php");
      include("pages/main.php");
      ?>
 
-<script src="modules/date.js"></script>
+<!-- <script src="modules/date.js"></script> -->
 </body>
 </html>
