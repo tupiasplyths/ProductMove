@@ -73,3 +73,7 @@ ul.product_list li img {
 ul{
     text-decoration: none;
 }
+.error {
+    font-size: 20px;
+    color: red;
+}

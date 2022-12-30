@@ -1,5 +1,6 @@
 var Manu = document.getElementById('ManuDate');
 var Warr = document.getElementById('WarrDate');
+var err = document.getElementById('errMsg');
 function checkValue(str, max) {
     if (str.charAt(0) !== '0' || str == '00') {
       var num = parseInt(str);
@@ -56,4 +57,48 @@ Warr.addEventListener('blur', function(e) {
     Warr.value = newdate;
 });
 
+// jump to next field on pressing enter
+function jump(e, self, next) {
+    if (window.event) e = window.event;
+    if (e.keyCode == 13) {
+        document.getElementById(next).focus();
+    }
+}
 
+document.getElementById("prodName").onkeyup = function(e) {
+    jump(e, this, 'prodCode');
+};
+document.getElementById("prodCode").onkeyup = function(e) {
+    jump(e, this, 'status');
+};
+document.getElementById("status").onkeyup = function(e) {
+    jump(e, this, 'Factory');
+};
+document.getElementById("Factory").onkeyup = function(e) {
+    jump(e, this, 'Distrib');
+};
+document.getElementById("Distrib").onkeyup = function(e) {
+    jump(e, this, 'WarrCen');
+};
+document.getElementById("WarrCen").onkeyup = function(e) {
+    jump(e, this, 'ManuDate');
+};
+document.getElementById("ManuDate").onkeyup = function(e) {
+    jump(e, this, 'WarrDate');
+};
+function checkEmpty(inp) {
+    if (!inp.value) {
+        inp.focus();
+        err.innerHTML = 'Please fill that field';
+    } else {
+        err.innerHTML = '';
+    }
+}
+function checkDate(inp) {
+    if (!inp.value || inp.value.length < 10) {
+        inp.focus();
+        err.innerHTML = 'Please fill that field';
+    } else {
+        err.innerHTML = '';
+    }
+}

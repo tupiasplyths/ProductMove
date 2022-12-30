@@ -1,5 +1,5 @@
 <h3>Thêm sản phẩm </h3>
-
+<span id="errMsg" class="error"></span>
 <table border="1" width= "50%" style="border-collapse:collapse">
     <form method="POST" action="modules/xulysp.php">
         <tr>
@@ -7,35 +7,35 @@
         </tr>
         <tr>
             <td>Tên sản phẩm</td>
-            <td><input type="text" name="tensanpham"></td>
+            <td><input type="text" name="tensanpham" id="prodName" onblur="checkEmpty(this)"> </td>
         </tr>
         <tr>
             <td>Mã sản phẩm</td>
-            <td><input type="text" name="masp"></td>
+            <td><input type="text" name="masp" id="prodCode" onblur="checkEmpty(this)"></td>
         </tr>
         <tr>
             <td>Trạng thái</td>
-            <td><input type="text" name="trangthai"></td>
+            <td><input type="text" name="trangthai" id="status" onblur="checkEmpty(this)"></td>
         </tr>
         <tr>
             <td>Cơ sở sản xuất</td>
-            <td><input type="text" name="Cososanxuat"></td>
+            <td><input type="text" name="Cososanxuat" id="Factory"></td>
         </tr>
         <tr>
             <td>Đại lý phân phối</td>
-            <td><input type="text" name="Dailyphanphoi"></td>
+            <td><input type="text" name="Dailyphanphoi" id="Distrib"></td>
         </tr>
         <tr>
             <td>Trung tâm bảo hành</td>
-            <td><input type="text" name="Trungtambaohanh"></td>
+            <td><input type="text" name="Trungtambaohanh" id="WarrCen"></td>
         </tr>
         <tr>
             <td>Ngày sản xuất</td>
-            <td><input type="text" name="Ngaysanxuat" placeholder="dd-mm-yyyy" class="date" id="ManuDate"></td>
+            <td><input type="text" name="Ngaysanxuat" placeholder="dd-mm-yyyy" class="date" id="ManuDate" onblur="checkDate(this)"></td>
         </tr>
         <tr>
             <td>Thời hạn bảo hành</td>
-            <td><input type="text" name="Thoihanbaohanh" placeholder="dd-mm-yyyy" class="date" id="WarrDate"></td>
+            <td><input type="text" name="Thoihanbaohanh" placeholder="dd-mm-yyyy" class="date" id="WarrDate" onblur="checkDate(this)"></td>
         </tr>
         <tr>
             <td>Danh mục sản phẩm</td>
@@ -59,4 +59,4 @@
     </form>
 
 </table>
-<script src="modules/date.js"></script>
+<script src="modules/addProd.js"></script>

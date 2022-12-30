@@ -3,6 +3,7 @@
     $query_sua_sp = mysqli_query($mysqli, $sql_sua_sp);
 ?>
 <p> Sửa danh mục sản phẩm </p>
+<span id="errMsg" class="error"></span>
 <table border="1" width= "50%" style="border-collapse:collapse">
 <form method="POST" action="modules/xulysp.php?idsanpham=<?php echo $_GET['idsanpham']?>">
     <?php
@@ -10,15 +11,15 @@
     ?>
         <tr>
             <td>Tên sản phẩm</td>
-            <td><input type="text" value="<?php echo $dong['tensanpham'] ?>" name="tensanpham" onfocus="empty(this)"></td>
+            <td><input type="text" value="<?php echo $dong['tensanpham'] ?>" name="tensanpham" onfocus="empty(this)" onblur="checkEmpty(this)"></td>
         </tr>
         <tr>
             <td>Mã sản phẩm</td>
-            <td><input type="text" value="<?php echo $dong['masp'] ?>" name="masp" onfocus="empty(this)"></td>
+            <td><input type="text" value="<?php echo $dong['masp'] ?>" name="masp" onfocus="empty(this)" onblur="checkEmpty(this)"></td>
         </tr>
         <tr>
             <td>Trạng thái</td>
-            <td><input type="text" value="<?php echo $dong['trangthai'] ?>" name="trangthai" onfocus="empty(this)"></td>
+            <td><input type="text" value="<?php echo $dong['trangthai'] ?>" name="trangthai" onfocus="empty(this)" onblur="checkEmpty(this)"></td>
         </tr>
         <tr>
             <td>Cơ sở sản xuất</td>
@@ -30,15 +31,15 @@
         </tr>
         <tr>
             <td>Trung tâm bảo hành</td>
-            <td><input type="text" value="<?php echo $dong['Trungtambaohanh'] ?>" name="Trungtambaohanh" onfocus="empty(this)"></td>
+            <td><input type="text" value="<?php echo $dong['Trungtambaohanh'] ?>" name="Trungtambaohanh" onfocus="empty(this)" onblur="checkEmpty(this)"></td>
         </tr>
         <tr>
             <td>Ngày sản xuất</td>
-            <td><input type="text" value="<?php echo $dong['Ngaysanxuat'] ?>" name="Ngaysanxuat" id="ManuDate_edit" onfocus="empty(this)"></td>
+            <td><input type="text" value="<?php echo $dong['Ngaysanxuat'] ?>" name="Ngaysanxuat" id="ManuDate_edit" onfocus="empty(this)" onblur="checkDate(this)"></td>
         </tr>
         <tr>
             <td>Thời hạn bảo hành</td>
-            <td><input type="text" value="<?php echo $dong['Thoihanbaohanh'] ?>" name="Thoihanbaohanh" id="WarrDate_edit" onfocus="empty(this)"></td>
+            <td><input type="text" value="<?php echo $dong['Thoihanbaohanh'] ?>" name="Thoihanbaohanh" id="WarrDate_edit" onfocus="empty(this)" onblur="checkDate(this)"></td>
         </tr>
         <tr>
             <td>Danh mục sản phẩm</td>
@@ -73,6 +74,7 @@
 <script>
     var ManuEd = document.getElementById('ManuDate_edit');
     var WarrEd = document.getElementById('WarrDate_edit');
+    var err = document.getElementById('errMsg');
     function checkValue(str, max) {
     if (str.charAt(0) !== '0' || str == '00') {
         var num = parseInt(str);
@@ -123,5 +125,21 @@
     // clear field upon focus
     function empty(inp) {
         inp.value = '';
+    }
+    function checkEmpty(inp) {
+        if (!inp.value) {
+            inp.focus();
+            err.innerHTML = 'Please fill that field';
+        } else {
+            err.innerHTML = '';
+        }
+    }
+    function checkDate(inp) {
+        if (!inp.value || inp.value.length < 10) {
+            inp.focus();
+            err.innerHTML = 'Please fill that field';
+        } else {
+            err.innerHTML = '';
+        }
     }
 </script>
