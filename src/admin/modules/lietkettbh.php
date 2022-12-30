@@ -4,6 +4,7 @@
     $tentrungtam = $_POST['tentrungtam'];
   }
   $sql_lietkesp = "SELECT * FROM sanpham, danhmuc WHERE sanpham.id_danhmuc = danhmuc.id AND sanpham.Trungtambaohanh LIKE '%" .$tentrungtam. "%' ORDER BY id_sanpham ASC";
+  //
   $query_lietkesp = mysqli_query($mysqli, $sql_lietkesp);
 ?>
 

@@ -1,6 +1,6 @@
 <?php
-    $sql_lietkesp = "SELECT * FROM sanpham, danhmuc  ORDER BY id_sanpham ASC";
-    //WHERE sanpham.id_danhmuc = danhmuc.id
+    $sql_lietkesp = "SELECT * FROM sanpham, danhmuc WHERE sanpham.id_danhmuc = danhmuc.id ORDER BY id_sanpham ASC";
+    
     $query_lietkesp = mysqli_query($mysqli, $sql_lietkesp);
 ?>
 
