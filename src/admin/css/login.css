@@ -3,20 +3,20 @@ div.container {
     display: flex;
     flex-direction : column;
 }
-table {
+/* table {
     background-color: aliceblue;
 }
 td, thead{
     border: 2px solid black;
     font-size: large;
     padding: 2px;
-}
+} */
 html {
     background-color: #56baed;
 }
 
 body {
-    background-image: url('assets/bg.png');
+    background-image: url('../assets/bg.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;    
@@ -142,4 +142,9 @@ input[type=text]:placeholder {
 .error {
     font-size: 20px;
     color: red;
+}
+.welcomeMsg {
+    color: #fff;
+    -webkit-text-stroke: 2px #23430C;
+    font-weight: bold;
 }

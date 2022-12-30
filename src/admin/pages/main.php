@@ -13,10 +13,10 @@
             $tam = '';
             $query = '';
         }
-        if ($tam=='' || !isset($_SESSION['valid']) || !$_SESSION['valid']) {
+        if (!isset($_SESSION['valid']) || !$_SESSION['valid']) {
             include("login.html");
-        } elseif ($tam == '' && isset($_SESSION['valid']) && $_SESSION['valid'] == true) {
-            include('main/index2.php');
+        } elseif ($tam == '' && $_SESSION['valid'] == true) {
+            include('homepage.php');
         }
         elseif ($tam=='quanly' && $query=='them') {
             include("modules/them.php");

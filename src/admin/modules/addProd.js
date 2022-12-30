@@ -19,8 +19,8 @@ Warr.addEventListener('input', function(e) {
     var values = input.split('-').map(function(v) {
     return v.replace(/\D/g, '')
     });
-    if (values[0]) values[0] = checkValue(values[0], 12);
-    if (values[1]) values[1] = checkValue(values[1], 31);
+    if (values[0]) values[0] = checkValue(values[0], 31);
+    if (values[1]) values[1] = checkValue(values[1], 12);
     var output = values.map(function(v, i) {
     return v.length == 2 && i < 2 ? v + '-' : v;
     });
@@ -34,8 +34,8 @@ Manu.addEventListener('input', function(e) {
     var values = input.split('-').map(function(v) {
     return v.replace(/\D/g, '')
     });
-    if (values[0]) values[0] = checkValue(values[0], 12);
-    if (values[1]) values[1] = checkValue(values[1], 31);
+    if (values[0]) values[0] = checkValue(values[0], 31);
+    if (values[1]) values[1] = checkValue(values[1], 12);
     var output = values.map(function(v, i) {
     return v.length == 2 && i < 2 ? v + '-' : v;
     });
@@ -57,35 +57,7 @@ Warr.addEventListener('blur', function(e) {
     Warr.value = newdate;
 });
 
-// jump to next field on pressing enter
-function jump(e, self, next) {
-    if (window.event) e = window.event;
-    if (e.keyCode == 13) {
-        document.getElementById(next).focus();
-    }
-}
-
-document.getElementById("prodName").onkeyup = function(e) {
-    jump(e, this, 'prodCode');
-};
-document.getElementById("prodCode").onkeyup = function(e) {
-    jump(e, this, 'status');
-};
-document.getElementById("status").onkeyup = function(e) {
-    jump(e, this, 'Factory');
-};
-document.getElementById("Factory").onkeyup = function(e) {
-    jump(e, this, 'Distrib');
-};
-document.getElementById("Distrib").onkeyup = function(e) {
-    jump(e, this, 'WarrCen');
-};
-document.getElementById("WarrCen").onkeyup = function(e) {
-    jump(e, this, 'ManuDate');
-};
-document.getElementById("ManuDate").onkeyup = function(e) {
-    jump(e, this, 'WarrDate');
-};
+// cheeck if the field is empty
 function checkEmpty(inp) {
     if (!inp.value) {
         inp.focus();
@@ -94,6 +66,7 @@ function checkEmpty(inp) {
         err.innerHTML = '';
     }
 }
+// check date field length
 function checkDate(inp) {
     if (!inp.value || inp.value.length < 10) {
         inp.focus();

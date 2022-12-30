@@ -5,7 +5,7 @@
         <a href="index.php?action=cososanxuat&id=2&query=them"> Theo cơ sở sản xuất </a></li>
         <a href="index.php?action=dailyphanphoi&id=3&query=them"> Theo đại lý phân phối </a></li>
         <a href="index.php?action=trungtambaohanh&id=4&query=them"> Theo trung tâm bảo hành </a></li>
-        <form action="control.php" method="post" id="logout">
+        <!-- <form action="control.php" method="post" id="logout">
             <input type="submit" value="Log out" name="logout_button"/>
-        </form>
+        </form> -->
 </div>

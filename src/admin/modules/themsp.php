@@ -1,7 +1,7 @@
 <h3>Thêm sản phẩm </h3>
 <span id="errMsg" class="error"></span>
 <table border="1" width= "50%" style="border-collapse:collapse">
-    <form method="POST" action="modules/xulysp.php">
+    <form method="POST" action="modules/xulysp.php" name="themsanpham" id="addForm">
         <tr>
             <th>Điền danh mục sản phẩm</th>
         </tr>
