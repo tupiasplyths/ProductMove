@@ -1,7 +1,7 @@
 CREATE TABLE `my_db`.`danhmuc` ( `id` INT NOT NULL AUTO_INCREMENT , `tendanhmuc` VARCHAR(100) NOT NULL , `thutu` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 CREATE TABLE `my_db`.`sanpham` ( `id_sanpham` INT NOT NULL AUTO_INCREMENT , `tensanpham` VARCHAR(100) NOT NULL , `masp` VARCHAR(100) NOT NULL , `trangthai` VARCHAR(100) NOT NULL , `Cososanxuat` VARCHAR(100) NOT NULL , `Dailyphanphoi` VARCHAR(100) NOT NULL , `Trungtambaohanh` VARCHAR(100) NOT NULL , `Ngaysanxuat` DATE NOT NULL , `Thoihanbaohanh` DATE NOT NULL , PRIMARY KEY (`id_sanpham`)) ENGINE = InnoDB;
 ALTER TABLE `sanpham` ADD `id_danhmuc` INT NOT NULL AFTER `Thoihanbaohanh`;
-
+CREATE TABLE `my_db`.`thongbao` ( `id_thongbao` INT NOT NULL AUTO_INCREMENT , `id_gui` VARCHAR(100) NOT NULL , `id_nhan` VARCHAR(100) NOT NULL , `id_sanpham` VARCHAR(100) NOT NULL , `noidung` VARCHAR(100) NOT NULL , PRIMARY KEY (`id_thongbao`)) ;
 // myphpadmin version
 CREATE DATABASE my_db;
 CREATE TABLE  my_db . danhmuc (
@@ -29,3 +29,38 @@ CREATE TABLE my_db.users (
 	username VARCHAR(20) NOT NULL,
 	passwords VARCHAR(255) NOT NULL
 )
+CREATE TABLE `my_db`.`thongbao` ( 
+	id_thongbao INT NOT NULL AUTO_INCREMENT ,
+	id_gui VARCHAR(100) NOT NULL ,
+	id_nhan VARCHAR(100) NOT NULL ,
+	id_sanpham VARCHAR(100) NOT NULL ,
+	noidung VARCHAR(100) NOT NULL ,
+	 PRIMARY KEY (`id_thongbao`)) ;
+
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Macbook 2', ' Mac2', ' Đưa về đại lý', ' HCM2', ' ĐN1', ' ĐN1', '2022-4-20', '2023-4-20', '3');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Macbook 3', ' Mac3', ' Lỗi, cần trả về nhà máy', ' HCM1', ' HCM1', ' HCM1', '2022-3-2', '2023-3-2', '3');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop Razer 2', ' Ra2', ' Mới sản xuất', ' HN3', ' None', ' None', '2022-7-12', '2023-7-15', '8');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop Razer 3', ' Ra3', ' Hết thời gian bảo hành', ' HN1', ' HN1', ' HN2', '2022-3-2', '2023-3-2', '8');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop HP 1', ' HP1', ' Đang sửa chữa bảo hành', ' HN2', ' HN2', ' HN1', '2022-9-2', '2023-9-2', '6');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop HP 2', ' HP2', ' Đã bảo hành xong', ' DN1', ' DN1', ' DN1', '2022-10-21', '2023-10-21', '6');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop Acer 1', ' Ac1', ' Lỗi, đã đưa về cơ sở sản xuất', ' HN3', ' HN2', ' HN2', '2022-5-13', '2023-5-13', '4');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop Acer 2', ' Ac2', ' Đưa về đại lý', ' HN3', ' HN2', ' HN3', '2022-6-10', '2023-6-10', '4');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop Acer 3', ' Ac3', ' Hết thời gian bảo hành', ' HCM1', ' HCM1', ' HCM2', '2022-1-8', '2023-1-8', '4');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop Lenovo 1', ' LNV1', ' Đưa về đại lý', ' ĐN2', ' ĐN2', ' ĐN2', '2021-1-20', '2024-1-20', '7');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop Lenovo 2', ' LNV2', ' Trả lại cơ sở sản xuất', ' HCM1', ' HCM1', ' HCM1', '2022-4-22', '2023-4-22', '7');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop Microsoft 1', ' MS1', ' Đang sửa chữa bảo hành', ' HCM3', ' HCM1', ' HCM1', '2022-10-4', '2023-10-4', '5');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop Microsoft 2', ' MS2', ' Hết thời gian bảo hành', ' HN1', ' HN1', ' HN2', '2022-1-12', '2023-1-12', '5');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop Asus 3', ' Asus3', ' Đang sửa chữa bảo hành', ' HCM2', ' HCM2', ' HCM1', '2020-9-31', '2023-9-31', '2');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop Asus 4', ' Asus4', ' Đã bảo hành xong', ' HN1', ' HN1', ' HN1', '2021-11-21', '2023-11-21', '2');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop DELL 3', ' DELL3', ' Lỗi, đã đưa về cơ sở sản xuất', ' HN2', ' HN2', ' HN1', '2022-5-19', '2024-5-19', '1');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop Lenovo 3', ' LNV3', ' Mới sản xuất', ' ĐN2', ' None', ' None', '2021-11-2', '2024-11-2', '7');
+INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `trangthai`, `Cososanxuat`, `Dailyphanphoi`, `Trungtambaohanh`, `Ngaysanxuat`, `Thoihanbaohanh`, `id_danhmuc`) VALUES (NULL, ' Laptop Lenovo 4', ' LNV4', ' Đang sửa chữa bảo hành', ' HN1', ' HN1', ' HN1', '2022-4-2', '2023-4-2', '7');
+
+INSERT INTO `danhmuc` (`id`, `tendanhmuc`, `thutu`) VALUES (NULL, ' Laptop DELL', '1');
+INSERT INTO `danhmuc` (`id`, `tendanhmuc`, `thutu`) VALUES (NULL, ' Laptop Asus ', '2');
+INSERT INTO `danhmuc` (`id`, `tendanhmuc`, `thutu`) VALUES (NULL, ' Macbook', '3');
+INSERT INTO `danhmuc` (`id`, `tendanhmuc`, `thutu`) VALUES (NULL, ' Laptop Acer', '4');
+INSERT INTO `danhmuc` (`id`, `tendanhmuc`, `thutu`) VALUES (NULL, ' Laptop MicroSoft', '5');
+INSERT INTO `danhmuc` (`id`, `tendanhmuc`, `thutu`) VALUES (NULL, ' Laptop HP', '6');
+INSERT INTO `danhmuc` (`id`, `tendanhmuc`, `thutu`) VALUES (NULL, ' Laptop Lenovo', '7');
+INSERT INTO `danhmuc` (`id`, `tendanhmuc`, `thutu`) VALUES (NULL, ' Laptop Razer', '8');
