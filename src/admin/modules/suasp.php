@@ -126,8 +126,11 @@
     function empty(inp) {
         inp.value = '';
     }
+    function isEmpty(str) {
+        return !str.trim().length;
+    }
     function checkEmpty(inp) {
-        if (!inp.value) {
+        if (isEmpty(inp.value)) {
             inp.focus();
             err.innerHTML = 'Please fill that field';
         } else {

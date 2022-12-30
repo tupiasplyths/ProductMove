@@ -57,9 +57,12 @@ Warr.addEventListener('blur', function(e) {
     Warr.value = newdate;
 });
 
+function isEmpty(str) {
+    return !str.trim().length;
+}
 // cheeck if the field is empty
 function checkEmpty(inp) {
-    if (!inp.value) {
+    if (isEmpty(inp.value)) {
         inp.focus();
         err.innerHTML = 'Please fill that field';
     } else {
