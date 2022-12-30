@@ -1,0 +1,42 @@
+table {
+    border-collapse: collapse;
+}
+thead {
+    background-color: rgb(161, 161, 161);
+}
+th {
+    border: solid  0.5px black;
+}
+th.sortable {
+    cursor: pointer;
+}
+
+td {
+    border: solid  0.5px black;
+}
+
+th span.arr::before {
+    content: "\2195";
+    color: black;
+    font-weight: bold;
+}
+
+th.sortable.dsc span.arr::before {
+    content: "\2193";
+    color: black;
+    font-weight: bold;
+}
+
+th.sortable.asc span.arr::before {
+    content: "\2191";
+    color: black;
+    font-weight: bold;
+}
+
+th.sortable.asc {
+    background-color: yellow;
+}
+
+th.sortable.dsc {
+    background-color: yellow;
+}
