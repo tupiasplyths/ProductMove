@@ -22,7 +22,8 @@ class Extract {
     public function toJSON() {
         $conn = Connect::initConn();
         // echo "<link rel='stylesheet' href='style.css'>";
-        $sql = "SELECT username, passwords FROM users";
+        // $sql = "SELECT username, passwords FROM users";
+        $sql = "SELECT * FROM sanpham, danhmuc WHERE sanpham.id_danhmuc = danhmuc.id ORDER BY id_sanpham ASC";
         $result = $conn->query($sql);
 
         //create an array

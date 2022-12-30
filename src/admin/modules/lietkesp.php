@@ -22,30 +22,10 @@
       <th>Thao tác</th>
     </tr>
 </thead>  
-  <?php
-  $i = 0;
-  while ($row = mysqli_fetch_array($query_lietkesp)) {
-      $i++;
-  ?>
-  <tr>
-    <td><?php echo $i ?></td>
-    <td><?php echo $row['tensanpham'] ?></td>
-    <td><?php echo $row['masp'] ?></td>
-    <td><?php echo $row['tendanhmuc'] ?></td>
-    <td><?php echo $row['trangthai'] ?></td>
-    <td><?php echo $row['Cososanxuat'] ?></td>
-    <td><?php echo $row['Dailyphanphoi'] ?></td>
-    <td><?php echo $row['Trungtambaohanh'] ?></td>
-    <td><?php echo $row['Ngaysanxuat'] ?></td>
-    <td><?php echo $row['Thoihanbaohanh'] ?></td>
-    <td>
-      <a href="modules/xulysp.php?idsanpham=<?php echo $row['id_sanpham']?>">Xóa </a> |
-      <a href="?action=quanlysanpham&query=sua&idsanpham=<?php echo $row['id_sanpham']?>">Sửa </a>
-    </td>
-  </tr>
-  <?php
-  }
-  ?>
-</table>
+  <tbody id="bod"></tbody>
 
+<button id="display" name="btn">
+  Display Table
+</button>
+<script src="homepage.js"></script>
 <script src="modules/sort.js"></script>
