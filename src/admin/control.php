@@ -13,9 +13,11 @@ class Control {
         echo $ext->toJSON();
     }
     public function login() {
-        echo 'logging in...';
+        // echo 'logging in...';
         $log = new Login($_POST['login_username'], $_POST['login_password']);
-        $log->checkPassword();
+
+        header('Content-Type: application/json');
+        echo $log->checkPassword();
     }
 
     public function signup() {
@@ -39,7 +41,7 @@ if (isset($_POST['a'])) {
 if (isset($_POST['SU_username'])) {
     $ctrl->signup();
 }
-if (isset($_POST['login'])) {
+if (isset($_POST['login_username'])) {
     $ctrl->login();
 }
 if (isset($_POST['logout_button'])) {

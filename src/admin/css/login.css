@@ -148,3 +148,8 @@ input[type=text]:placeholder {
     -webkit-text-stroke: 2px #23430C;
     font-weight: bold;
 }
+.logout {
+    position: absolute;
+    top : 20px;
+    right: 30px;
+}

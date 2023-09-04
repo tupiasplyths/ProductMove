@@ -9,7 +9,7 @@ function jsonToTable() {
         method: 'post',
         body: fm
     }).then((response) => response.json())
-        .then((data) => {
+        .then((data) => {   
             for (var i=0; i<data.length; i++) {
                 text+= "<tr><td>" + i
                     + "</td><td>" + data[i].tensanpham 

@@ -23,7 +23,7 @@ include_once('control.php');
         <h1 class="welcomeMsg">Chào mừng đến với BigCorp</h1>
         
         <form action="control.php" method="post" id="logout">
-            <input type="submit" value="Log out" name="logout_button"/>
+            <input type="submit" value="Log out" name="logout_button" class="logout"/>
         </form>
     </div>
 

@@ -8,6 +8,7 @@
 <body>
     <div class="header">
         <p>BAN ĐIỀU HÀNH BIGCORP</p>
+        
     </div>
     <?php  
      include("config/config.php");
