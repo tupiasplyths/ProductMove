@@ -3,6 +3,11 @@ var submit = document.getElementById('login');
 
 
 login.addEventListener('click', userLogin);
+document.getElementById("login_password").onkeyup = function(e) {
+    if (e.key == 'Enter') {
+        userLogin();
+    }
+}
 
 function checkEmpty(inp) {
     if (!inp.value) {
@@ -17,18 +22,16 @@ function checkEmpty(inp) {
 
 
 function userLogin() {
-    var form = document.getElementById('login_form');
-    var fm = new FormData(form);
-    console.log('pressed');
+    var form = new FormData(document.getElementById('login_form'));
+    // console.log('pressed');
     fetch('control.php', {
         method: 'post',
-        body: fm
+        body: form
     }).then((response) => response.json())
         .then((data) => {   
             // console.log(data);
             err.innerHTML = data.message;
             if (data.message == 'You are logged in!') {
-                // window.location.replace("index.php");
                 window.setTimeout(function () {
                     window.location.href = "index.php"; 
                 }, 2000);
