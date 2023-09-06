@@ -23,7 +23,11 @@ class Control {
     public function signup() {
         $sig = new Signup($_POST['SU_username'], $_POST['password']);
         $sig->modifyDB();
-        header("refresh:4; url=login.html");
+        // header("refresh:4; url=login.html");
+        $message = array("body"=>"Sign up successfully");
+
+        header('Content-Type: application/json');
+        echo json_encode($message);
     }
 
     public function logout()

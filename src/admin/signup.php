@@ -18,14 +18,17 @@ class Signup {
         $sql = "INSERT INTO users SET username ='" . $this->SU_username 
                 . "', passwords ='" . $sec_pwd . "'";
 
+        //array to hold query connection result
+        $message = array();
         // run the query
         if($conn->query($sql)==TRUE) {
-            echo "success";
+            $message[] = "successs";
         } else {
-            echo "failed";
+            $message[] = "failed";
         }
         //close the connection
         $conn->close();
+        json_encode($message);
     }
 }
 
