@@ -67,12 +67,12 @@ func userSignup(w http.ResponseWriter, req *http.Request) {
 		}
 	}
 
-	err = user.signup()
+	msg, err := user.signup()
 	if err != nil {
 		json.NewEncoder(w).Encode(&response{Message: "Sign up failed"})
 	} else {
 		w.WriteHeader(http.StatusOK)
-		json.NewEncoder(w).Encode(&response{Message: "Sign up success"})
+		json.NewEncoder(w).Encode(&response{Message: msg})
 	}
 }
 

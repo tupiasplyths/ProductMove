@@ -75,9 +75,11 @@ function userSignup() {
         .then((data) => {   
             console.log(data);
             document.getElementById("reminder").innerHTML = data.Message;
-            window.setTimeout(function () {
-                window.location.href = "login.html"; 
-            }, 2000);
+            if (data.message == 'Sign up success') {
+                window.setTimeout(function () {
+                    window.location.href = "login.html"; 
+                }, 2000);
+            }
         }).catch((error) => {
                 console.log(error);
             }
