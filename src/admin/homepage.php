@@ -19,8 +19,8 @@ include_once('control.php');
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    <div class="container">
-        <h1 class="welcomeMsg">Chào mừng đến với BigCorp</h1>
+    <div class="container2">
+        <h1 class="welcomeMsg">Welcome to BigCorp</h1>
         
         <form action="control.php" method="post" id="logout">
             <input type="submit" value="Log out" name="logout_button" class="logout"/>

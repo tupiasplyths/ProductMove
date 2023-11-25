@@ -22,18 +22,23 @@ function checkEmpty(inp) {
 
 
 function userLogin() {
-    var form = new FormData(document.getElementById('login_form'));
-    // console.log('pressed'); jouuu
-    fetch('control.php', {
+    var rawform = new FormData(document.getElementById('login_form'));
+    // var form  = JSON.stringify($('#login_form').serializeObject());
+    var form = JSON.stringify(Object.fromEntries(rawform));
+    // console.log(form);
+    fetch('/login', {
         method: 'post',
-        body: form
+        body: form,
+        headers : {
+            'Content-Type': 'application/json'
+        }
     }).then((response) => response.json())
         .then((data) => {   
             // console.log(data);
-            err.innerHTML = data.message;
+            err.innerHTML = data.Message;
             if (data.message == 'You are logged in!') {
                 window.setTimeout(function () {
-                    window.location.href = "index.php"; 
+                    window.location.href = "index.html"; 
                 }, 2000);
             }
         }).catch((error) => {

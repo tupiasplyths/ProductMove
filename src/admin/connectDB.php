@@ -7,7 +7,7 @@ class Connect {
         $DBusername = "root";
         $DBpassword = "";
         $dbname = "my_db";
-        $conn = new mysqli($servername, $DBusername, $DBpassword, $dbname, "3307");
+        $conn = new mysqli($servername, $DBusername, $DBpassword, $dbname, "3306");
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
