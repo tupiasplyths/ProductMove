@@ -51,7 +51,7 @@ func userSignup(w http.ResponseWriter, req *http.Request) {
 	decoder := json.NewDecoder(req.Body)
 	w.Header().Set("Content-Type", "application/json")
 	type tempUser struct {
-		SU_username, password string
+		SU_username, Password string
 	}
 
 	var tmpUser tempUser
@@ -63,10 +63,10 @@ func userSignup(w http.ResponseWriter, req *http.Request) {
 		fmt.Println(tmpUser)
 		user = User{
 			Username: tmpUser.SU_username,
-			Password: tmpUser.password,
+			Password: tmpUser.Password,
 		}
 	}
-	
+
 	err = user.signup()
 	if err != nil {
 		json.NewEncoder(w).Encode(&response{Message: "Sign up failed"})
