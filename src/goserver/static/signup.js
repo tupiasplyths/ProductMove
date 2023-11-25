@@ -62,15 +62,19 @@ function accept() {
 
 function userSignup() {
     console.log("accepted");
-    var form = new FormData(document.getElementById("signup_form"));
-
-    fetch('control.php', {
+    var rawform = new FormData(document.getElementById("signup_form"));
+    var form = JSON.stringify(Object.fromEntries(rawform));
+    // console.log(form)
+    fetch('/signup', {
         method: 'post',
-        body: form
+        body: form,
+        headers: {
+            'Content-Type': 'application/json'
+        }
     }).then((response) => response.json())
         .then((data) => {   
             console.log(data);
-            document.getElementById("reminder").innerHTML = data.body;
+            document.getElementById("reminder").innerHTML = data.Message;
             window.setTimeout(function () {
                 window.location.href = "login.html"; 
             }, 2000);

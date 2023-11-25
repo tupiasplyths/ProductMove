@@ -9,10 +9,6 @@ import (
 	// "strings"
 )
 
-type tempUser struct {
-	Login_username, Login_password string
-}
-
 type response struct {
 	Message string
 }
@@ -21,6 +17,10 @@ func userLogin(w http.ResponseWriter, req *http.Request) {
 	// fmt.Println(req.Body)
 	decoder := json.NewDecoder(req.Body)
 	w.Header().Set("Content-Type", "application/json")
+	type tempUser struct {
+		Login_username, Login_password string
+	}
+
 	var tmpUser tempUser
 	var user User
 	err := decoder.Decode(&tmpUser)
@@ -33,6 +33,7 @@ func userLogin(w http.ResponseWriter, req *http.Request) {
 			Password: tmpUser.Login_password,
 		}
 	}
+
 	flag, err := user.checkPasswords()
 	if err != nil {
 		log.Fatal(err)
@@ -40,10 +41,8 @@ func userLogin(w http.ResponseWriter, req *http.Request) {
 
 	if flag {
 		w.WriteHeader(http.StatusOK)
-		// w.Write([]byte("You are logged in!"))
 		json.NewEncoder(w).Encode(&response{Message: "You are logged in!"})
 	} else {
-		// w.Write([]byte("Wrong passwords"))
 		json.NewEncoder(w).Encode(&response{Message: "Wrong passwords"}) 
 	}
 }
@@ -51,26 +50,33 @@ func userLogin(w http.ResponseWriter, req *http.Request) {
 func userSignup(w http.ResponseWriter, req *http.Request) {
 	decoder := json.NewDecoder(req.Body)
 	w.Header().Set("Content-Type", "application/json")
-	var user User
-	err := decoder.Decode(&user)
-	if err != nil {
-		log.Fatal(err)
+	type tempUser struct {
+		SU_username, password string
 	}
+
+	var tmpUser tempUser
+	var user User
+	err := decoder.Decode(&tmpUser)
+	if err != nil {
+		log.Fatal(err, "decode error")
+	} else {
+		fmt.Println(tmpUser)
+		user = User{
+			Username: tmpUser.SU_username,
+			Password: tmpUser.password,
+		}
+	}
+	
 	err = user.signup()
 	if err != nil {
-		w.Write([]byte("Sign up failed"))
-		log.Fatal(err)
+		json.NewEncoder(w).Encode(&response{Message: "Sign up failed"})
 	} else {
-		w.Write([]byte("Sign up success"))
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(&response{Message: "Sign up success"})
 	}
 }
-// func server() {
-
-// }
 
 func main() {
-	// go server()
-	// ctrl := NewControl()
 	fileServer := http.FileServer(http.Dir("./static")) 
     http.Handle("/", fileServer) 
 	http.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request){
